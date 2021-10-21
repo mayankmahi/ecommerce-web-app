@@ -31,7 +31,7 @@ function App () {
     })
     // cleanup
     return () => unsubscribe()
-  }, [])
+  }, [dispatch])
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>

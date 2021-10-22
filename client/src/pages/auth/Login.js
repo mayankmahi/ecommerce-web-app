@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { auth, googleAuthProvider } from '../../firebase'
+import React, { useEffect, useState } from 'react'
+import { googleAuthProvider } from '../../firebase'
 import {
   signInWithEmailAndPassword,
   getAuth,
@@ -8,12 +8,20 @@ import {
 import { toast } from 'react-toastify'
 import { Button } from 'antd'
 import { GoogleOutlined, MailOutlined } from '@ant-design/icons'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState('mkmahi1198@gmail.com')
   const [password, setPassword] = useState('123456')
   const [loading, setLoading] = useState(false)
+
+  const { user } = useSelector(state => ({ ...state }))
+  useEffect(() => {
+    if (user && user.token) {
+      history.push('/')
+    }
+  }, [user])
 
   const dispatch = useDispatch()
   const auth = getAuth()
@@ -119,6 +127,9 @@ const Login = ({ history }) => {
           >
             Login with Google
           </Button>
+          <Link to='/forgot/password' className='float-right text-danger'>
+            Forgot Password
+          </Link>
         </div>
       </div>
     </div>

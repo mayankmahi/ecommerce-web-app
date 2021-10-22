@@ -11,6 +11,7 @@ const Login = lazy(() => import('./pages/auth/Login'))
 const Register = lazy(() => import('./pages/auth/Register'))
 const Header = lazy(() => import('./pages/Components/nav/Header'))
 const RegisterComplete = lazy(() => import('./pages/auth/RegisterComplete'))
+const ForgotPassword = lazy(() => import('./pages/auth/ForgotPassword'))
 
 function App () {
   const dispatch = useDispatch()
@@ -43,6 +44,7 @@ function App () {
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Register} />
           <Route exact path='/register/complete' component={RegisterComplete} />
+          <Route exact path='/forgot/password' component={ForgotPassword} />
         </Switch>
       </Suspense>
     </>
